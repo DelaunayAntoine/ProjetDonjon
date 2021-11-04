@@ -9,8 +9,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Player;
+import view.ConsoleView;
 import view.JavaFXView;
 import view.View;
+
+import java.util.ArrayList;
 
 public class App extends Application {
     /*
@@ -38,7 +41,7 @@ public class App extends Application {
         root.getChildren().add(message);
         root.getChildren().add(new Canvas(400,200));
         Scene scene = new Scene(root);
-        Player player = new Player(view);
+        Player player = new Player(130,100,200,new ArrayList<>(0) ,"ToinouTheMachine",new ConsoleView());
         JavaFXController javaFXController = new JavaFXController(player);
         scene.setOnKeyPressed(javaFXController.eventHandler);
         primaryStage.setScene(scene);
