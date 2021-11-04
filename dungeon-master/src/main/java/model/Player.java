@@ -9,8 +9,8 @@ public class Player extends GameCharacter{
     private String  name;
 
 
-    public Player(int vitality, int strength,ArrayList<Item> inventory,String name ) {
-        super(vitality, strength);
+    public Player(int vitality, int strength,int maxVitality,ArrayList<Item> inventory,String name ) {
+        super(vitality, strength,maxVitality);
         this.name = name;
         this.inventory = inventory;
     }
