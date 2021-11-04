@@ -1,9 +1,5 @@
 package model;
 
-import model.GameCharacter;
-import model.Player;
-import model.Monster;
-
 public class Fight {
     public Monster monster;
     public Player player;
@@ -14,5 +10,6 @@ public class Fight {
         this.player = player;
     }
 
-    
+
+
 }

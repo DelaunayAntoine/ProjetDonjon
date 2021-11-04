@@ -8,4 +8,9 @@ public class Monster extends GameCharacter{
         super(vitality, strength,maxVitality);
         this.Type = Type;
     }
+
+    public void attack(GameCharacter player){
+        System.out.println("Monster attack" );
+        player.setVitality(player.getVitality() - this.getStrength());
+    }
 }
