@@ -13,11 +13,13 @@ public class Potion implements Item{
 
     @Override
     public String getType() {
+
         return type;
     }
 
     @Override
     public int getValue() {
+
         return value;
     }
 }

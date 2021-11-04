@@ -9,8 +9,11 @@ import model.GameCharacter;
 
 public class Player extends GameCharacter{
     ArrayList<Item> inventory;
-    private String  name;
+    private final String  name;
 
+    public String getName() {
+        return name;
+    }
 
     public Player(int vitality, int strength,int maxVitality,ArrayList<Item> inventory,String name ) {
         super(vitality, strength,maxVitality);
@@ -23,6 +26,13 @@ public class Player extends GameCharacter{
        monster.setVitality(monster.getVitality() - this.getStrength());
 
     }
+
+    public void use(Item item){
+        if (this.inventory.contains(item)){
+
+        }
+    }
+
 
 
 
