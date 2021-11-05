@@ -43,10 +43,11 @@ public class Player extends GameCharacter{
 
     public void use(Item item){
         if (this.inventory.contains(item)){
-            //this.getVitality() += Potion.getValue();
+            int newVitality = this.getVitality() + item.getValue();
+            this.setVitality(newVitality);
                     this.inventory.remove(item);
-
         }
+
     }
 
 }
