@@ -1,16 +1,15 @@
 package model;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
-public class Room {
+public class Map {
 
-    private Map<String, Room> nextRooms = new HashMap<String, Room>();
+    private java.util.Map<String, Map> nextRooms = new HashMap<String, Map>();
     private static final List<String> DIRECTIONS  = Arrays.asList("north", "south", "east", "west");
     private static final int PERCENT_CREATE_NEW_ROOM = 30;
     private Boolean isAlreadyVisited = false;
 
-    public Room(Room previousRoom, String previousRoomDirection) {
+    public Map(Map previousRoom, String previousRoomDirection) {
         switch (previousRoomDirection) {
             case "north":
                 this.nextRooms.put("south", previousRoom);
@@ -30,9 +29,9 @@ public class Room {
             if (this.nextRooms.containsKey(direction)) continue;
             Random rand = new Random();
             if (rand.nextInt(100) <= PERCENT_CREATE_NEW_ROOM) {
-                this.nextRooms.put(direction, new Room(this, direction));
+                this.nextRooms.put(direction, new Map(this, direction));
             }
         }
-    }
 
+    }
 }

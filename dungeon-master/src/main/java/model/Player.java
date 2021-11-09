@@ -26,7 +26,9 @@ public class Player extends GameCharacter{
     }
 
     public void ExploreNorth() {
+
         view.handleMove(new Move("You face a wall"));
+
     }
 
     public void attack(GameCharacter monster){

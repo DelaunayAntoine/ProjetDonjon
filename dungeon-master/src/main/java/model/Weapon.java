@@ -10,13 +10,11 @@ public class Weapon implements Item {
     private int value ;
     private String type;
 
-    @Override
     public String getType() {
 
         return type;
     }
 
-    @Override
     public int getValue() {
 
         return value;

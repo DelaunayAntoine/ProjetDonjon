@@ -2,6 +2,7 @@ package controller;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
+import model.Map;
 import model.Player;
 
 public class JavaFXController {
