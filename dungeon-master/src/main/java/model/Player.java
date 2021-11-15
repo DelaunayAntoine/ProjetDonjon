@@ -1,39 +1,71 @@
 package model;
 
-import view.ConsoleView;
-import view.JavaFXView;
 import view.View;
 import java.util.ArrayList;
-import model.Monster;
-import model.GameCharacter;
 
 
 public class Player extends GameCharacter{
-    ArrayList<Item> inventory;
-    private  String  name;
-    View view ;
+    private ArrayList<Item> inventory;
+    private String  name;
+    private View view;
+    private Map currentRoom;
 
 
     public String getName() {
         return name;
     }
 
-    public Player(int vitality, int strength,int maxVitality,ArrayList<Item> inventory,String name,View view ) {
+    public Player(int vitality, int strength,int maxVitality,ArrayList<Item> inventory,String name, View view) {
         super(vitality, strength,maxVitality);
         this.name = name;
         this.inventory = inventory;
         this.view = view;
     }
 
-    public void ExploreNorth() {
+    public void exploreNorth() {
+        if (this.getCurrentRoom().getNorthRoom() != null) {
+            this.setCurrentRoom(this.getCurrentRoom().getNorthRoom());
+            System.out.println("you're going to north room.");
+        } else {
+            System.out.println("You're facing a wall !");
+        }
+    } // public void exploreNorth()
 
-        view.handleMove(new Move("You face a wall"));
+    public void exploreSouth() {
+        if (this.getCurrentRoom().getSouthRoom() != null) {
+            this.setCurrentRoom(this.getCurrentRoom().getSouthRoom());
+            if(!this.currentRoom.getAlreadyVisited()) {
+                this.currentRoom.setAlreadyVisited(true);
+                //this.currentRoom.fight.start();
+            }
+            System.out.println("you're going to south room.");
+        } else {
+            System.out.println("You're facing a wall !");
+        }
+    } // public void exploreSouth()
 
-    }
+    public void exploreEast() {
+        if (this.getCurrentRoom().getEastRoom() != null) {
+            this.setCurrentRoom(this.getCurrentRoom().getEastRoom());
+            System.out.println("you're going to east room.");
+        } else {
+            System.out.println("You're facing a wall !");
+        }
+    } // public void exploreEast()
+
+    public void exploreWest() {
+        if (this.getCurrentRoom().getWestRoom() != null) {
+            this.setCurrentRoom(this.getCurrentRoom().getWestRoom());
+            System.out.println("you're going to west room.");
+        } else {
+            System.out.println("You're facing a wall !");
+        }
+    } // public void exploreWest()
+
 
     public void attack(GameCharacter monster){
-       System.out.println("Player attack" );
-       monster.setVitality(monster.getVitality() - this.getStrength());
+        System.out.println("Player attack" );
+        monster.setVitality(monster.getVitality() - this.getStrength());
 
     }
 
@@ -47,9 +79,15 @@ public class Player extends GameCharacter{
         if (this.inventory.contains(item)){
             int newVitality = this.getVitality() + item.getValue();
             this.setVitality(newVitality);
-                    this.inventory.remove(item);
+            this.inventory.remove(item);
         }
 
     }
 
+    public Map getCurrentRoom() {
+        return currentRoom;
+    }
+    public void setCurrentRoom(Map currentRoom) {
+        this.currentRoom = currentRoom;
+    }
 }

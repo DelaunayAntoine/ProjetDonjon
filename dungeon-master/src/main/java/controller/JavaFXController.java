@@ -6,19 +6,17 @@ import model.Map;
 import model.Player;
 
 public class JavaFXController {
-        EventHandler<? super KeyEvent> eventHandler;
+        EventHandler<? super KeyEvent> moveKeyPressEventHandler;
 
         JavaFXController(Player player){
-
-                eventHandler = new EventHandler<KeyEvent>() {
-                        @Override
-                        public void handle(KeyEvent event) {
-                                switch (event.getCode()) {
-                                        case UP:    player.ExploreNorth(); break;
-                                        case DOWN:  player.ExploreNorth(); break;
-                                        case LEFT:  player.ExploreNorth(); break;
-                                        case RIGHT: player.ExploreNorth(); break;
-                                }
+                moveKeyPressEventHandler = (EventHandler<KeyEvent>) event -> {
+                        switch (event.getCode()) {
+                                case UP:    player.exploreNorth(); break;
+                                case DOWN:  player.exploreSouth(); break;
+                                case LEFT:  player.exploreWest(); break;
+                                case RIGHT: player.exploreEast(); break;
                         }
-                }; }
+                };
+        }
+
 }

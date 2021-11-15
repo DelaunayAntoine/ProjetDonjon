@@ -8,6 +8,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Map;
 import model.Player;
 import view.ConsoleView;
 import view.JavaFXView;
@@ -41,13 +42,15 @@ public class App extends Application {
         root.getChildren().add(message);
         root.getChildren().add(new Canvas(400,200));
         Scene scene = new Scene(root);
+
         Player player = new Player(130,100,200,new ArrayList<>(0) ,"ToinouTheMachine",new ConsoleView());
+        Map map = new Map();
+        player.setCurrentRoom(map);
+
         JavaFXController javaFXController = new JavaFXController(player);
-        scene.setOnKeyPressed(javaFXController.eventHandler);
+        scene.setOnKeyPressed(javaFXController.moveKeyPressEventHandler);
         primaryStage.setScene(scene);
         primaryStage.show();
-
-
 
     }
 }
