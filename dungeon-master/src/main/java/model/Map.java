@@ -9,6 +9,9 @@ public class Map {
     private static final int PERCENT_CREATE_NEW_ROOM = 50;
     private static final int FINAL_LAYER = 6;
     private Boolean isAlreadyVisited = false;
+    private Map currentRoom;
+
+
 
     public Map() {
         for (String direction : DIRECTIONS) {
@@ -45,19 +48,18 @@ public class Map {
         }
 
         // COMBAT + TRESOR
-        // rand création création combat
+        // rand création combat
     }
 
-    public void visitMap(Player player) {
+    public void visitMap (Player player,Fight fight) {
         if(!this.getAlreadyVisited()) {
             this.setAlreadyVisited(true);
-
             //this.currentRoom.fight.start();
         }
 
 
-
     }
+
 
 
     public Map getNorthRoom() {
@@ -73,9 +75,19 @@ public class Map {
         return this.nextRooms.get("west");
     }
 
+    public Map getCurrentRoom() {
+        return currentRoom;
+    }
+    public void setCurrentRoom(Map currentRoom) {
+        this.currentRoom = currentRoom;
+    }
+
+
     public Boolean getAlreadyVisited() {
         return isAlreadyVisited;
     }
+
+
 
     public void setAlreadyVisited(Boolean alreadyVisited) {
         isAlreadyVisited = alreadyVisited;
