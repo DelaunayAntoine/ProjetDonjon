@@ -2,6 +2,7 @@ package model;
 
 import view.View;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class Player extends GameCharacter{
@@ -10,7 +11,8 @@ public class Player extends GameCharacter{
     private View view;
     private Map currentRoom;
     private Fight fight;
-
+    private static final int PERCENT_CHOICE_TO_FIGHT = 50;
+    private static final int PERCENT_CHOICE_TO_HAVE_CHEST = 20;
 
 
     public String getName() {
@@ -26,12 +28,18 @@ public class Player extends GameCharacter{
 
     }
 
-    public void exploreNorth() {
+    public void exploreNorth(Player player) {
         if (this.getCurrentRoom().getNorthRoom() != null) {
             this.setCurrentRoom(this.getCurrentRoom().getNorthRoom());
             if(!this.currentRoom.getAlreadyVisited()) {
                 this.currentRoom.setAlreadyVisited(true);
-                this.currentRoom.fight.battle();
+                Random rand = new Random();
+                if (rand.nextInt(100) <= PERCENT_CHOICE_TO_FIGHT) {
+                    this.currentRoom.fight.battle();
+                }
+                if (rand.nextInt(100) <= PERCENT_CHOICE_TO_HAVE_CHEST) {
+                    this.currentRoom.chest.open(player);
+                }
             }
             System.out.println("you're going to north room.");
         } else {
@@ -44,8 +52,13 @@ public class Player extends GameCharacter{
             this.setCurrentRoom(this.getCurrentRoom().getSouthRoom());
             if(!this.currentRoom.getAlreadyVisited()) {
                 this.currentRoom.setAlreadyVisited(true);
-                this.currentRoom.fight.battle();
-                this.currentRoom.chest.open(player);
+                Random rand = new Random();
+                if (rand.nextInt(100) <= PERCENT_CHOICE_TO_FIGHT) {
+                    this.currentRoom.fight.battle();
+                }
+                if (rand.nextInt(100) <= PERCENT_CHOICE_TO_HAVE_CHEST) {
+                    this.currentRoom.chest.open(player);
+                }
             }
             System.out.println("you're going to south room.");
         } else {
@@ -53,12 +66,18 @@ public class Player extends GameCharacter{
         }
     } // public void exploreSouth()
 
-    public void exploreEast() {
+    public void exploreEast(Player player) {
         if (this.getCurrentRoom().getEastRoom() != null) {
             this.setCurrentRoom(this.getCurrentRoom().getEastRoom());
             if(!this.currentRoom.getAlreadyVisited()) {
                 this.currentRoom.setAlreadyVisited(true);
-                this.currentRoom.fight.battle();
+                Random rand = new Random();
+                if (rand.nextInt(100) <= PERCENT_CHOICE_TO_FIGHT) {
+                    this.currentRoom.fight.battle();
+                }
+                if (rand.nextInt(100) <= PERCENT_CHOICE_TO_HAVE_CHEST) {
+                    this.currentRoom.chest.open(player);
+                }
             }
             System.out.println("you're going to east room.");
         } else {
@@ -66,12 +85,18 @@ public class Player extends GameCharacter{
         }
     } // public void exploreEast()
 
-    public void exploreWest() {
+    public void exploreWest(Player player) {
         if (this.getCurrentRoom().getWestRoom() != null) {
             this.setCurrentRoom(this.getCurrentRoom().getWestRoom());
             if(!this.currentRoom.getAlreadyVisited()) {
                 this.currentRoom.setAlreadyVisited(true);
-                this.currentRoom.fight.battle();
+                Random rand = new Random();
+                if (rand.nextInt(100) <= PERCENT_CHOICE_TO_FIGHT) {
+                    this.currentRoom.fight.battle();
+                }
+                if (rand.nextInt(100) <= PERCENT_CHOICE_TO_HAVE_CHEST) {
+                    this.currentRoom.chest.open(player);
+                }
             }
             System.out.println("you're going to west room.");
         } else {

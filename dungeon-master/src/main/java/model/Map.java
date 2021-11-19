@@ -52,7 +52,7 @@ public class Map {
             }
         }
 
-        this.fight = new Fight(new Monster(200,10,20,"vampire"),new Player(130,100,200,new ArrayList<>(0) ,"ToinouTheMachine",new ConsoleView()));
+        this.fight = new Fight(new Monster(200,10,20,"vampire"),new Player(130,100,200,new ArrayList<>(0),"ToinouTheMachine",new ConsoleView()));
         this.chest = new Chest(item);
         // COMBAT + TRESOR
         // rand création combat
