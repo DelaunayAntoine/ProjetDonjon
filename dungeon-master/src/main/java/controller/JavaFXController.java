@@ -2,20 +2,25 @@ package controller;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
+import model.Item;
 import model.Map;
 import model.Player;
+import model.Potion;
 
 public class JavaFXController {
         EventHandler<? super KeyEvent> moveKeyPressEventHandler;
+        public Item item;
 
         JavaFXController(Player player){
                 moveKeyPressEventHandler = (EventHandler<KeyEvent>) event -> {
                         switch (event.getCode()) {
                                 case UP:    player.exploreNorth(); break;
-                                case DOWN:  player.exploreSouth(); break;
+                                case DOWN:  player.exploreSouth(player); break;
                                 case LEFT:  player.exploreWest(); break;
                                 case RIGHT: player.exploreEast(); break;
+                                case B:  player.use(item); break;
                         }
+
                 };
         }
 

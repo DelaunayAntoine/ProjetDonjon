@@ -9,6 +9,8 @@ public class Player extends GameCharacter{
     private String  name;
     private View view;
     private Map currentRoom;
+    private Fight fight;
+
 
 
     public String getName() {
@@ -20,23 +22,30 @@ public class Player extends GameCharacter{
         this.name = name;
         this.inventory = inventory;
         this.view = view;
+
+
     }
 
     public void exploreNorth() {
         if (this.getCurrentRoom().getNorthRoom() != null) {
             this.setCurrentRoom(this.getCurrentRoom().getNorthRoom());
+            if(!this.currentRoom.getAlreadyVisited()) {
+                this.currentRoom.setAlreadyVisited(true);
+                this.currentRoom.fight.battle();
+            }
             System.out.println("you're going to north room.");
         } else {
             System.out.println("You're facing a wall !");
         }
     } // public void exploreNorth()
 
-    public void exploreSouth() {
+    public void exploreSouth(Player player) {
         if (this.getCurrentRoom().getSouthRoom() != null) {
             this.setCurrentRoom(this.getCurrentRoom().getSouthRoom());
             if(!this.currentRoom.getAlreadyVisited()) {
                 this.currentRoom.setAlreadyVisited(true);
-                //this.currentRoom.fight.start();
+                this.currentRoom.fight.battle();
+                this.currentRoom.chest.open(player);
             }
             System.out.println("you're going to south room.");
         } else {
@@ -47,6 +56,10 @@ public class Player extends GameCharacter{
     public void exploreEast() {
         if (this.getCurrentRoom().getEastRoom() != null) {
             this.setCurrentRoom(this.getCurrentRoom().getEastRoom());
+            if(!this.currentRoom.getAlreadyVisited()) {
+                this.currentRoom.setAlreadyVisited(true);
+                this.currentRoom.fight.battle();
+            }
             System.out.println("you're going to east room.");
         } else {
             System.out.println("You're facing a wall !");
@@ -56,6 +69,10 @@ public class Player extends GameCharacter{
     public void exploreWest() {
         if (this.getCurrentRoom().getWestRoom() != null) {
             this.setCurrentRoom(this.getCurrentRoom().getWestRoom());
+            if(!this.currentRoom.getAlreadyVisited()) {
+                this.currentRoom.setAlreadyVisited(true);
+                this.currentRoom.fight.battle();
+            }
             System.out.println("you're going to west room.");
         } else {
             System.out.println("You're facing a wall !");
@@ -80,9 +97,10 @@ public class Player extends GameCharacter{
             int newVitality = this.getVitality() + item.getValue();
             this.setVitality(newVitality);
             this.inventory.remove(item);
+            System.out.println("Use Item" );
         }
-
     }
+
 
     public Map getCurrentRoom() {
         return currentRoom;
