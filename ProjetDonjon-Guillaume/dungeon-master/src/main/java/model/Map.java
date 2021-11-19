@@ -1,5 +1,8 @@
 package model;
 
+import jdk.swing.interop.SwingInterOpUtils;
+import view.ConsoleView;
+
 import java.util.*;
 
 public class Map {
@@ -10,19 +13,21 @@ public class Map {
     private static final int FINAL_LAYER = 6;
     private Boolean isAlreadyVisited = false;
     private Map currentRoom;
+    public Fight fight;
+    public Chest chest;
+    public Item item;
 
 
-
-    public Map() {
+    public Map(Player player) {
         for (String direction : DIRECTIONS) {
             if (this.nextRooms.containsKey(direction)) continue;
             Random rand = new Random();
             if (rand.nextInt(100) <= PERCENT_CREATE_NEW_ROOM) {
-                this.nextRooms.put(direction, new Map(this, direction, 1));
+                this.nextRooms.put(direction, new Map(this, direction, 1,player));
             }
         }
     }
-    public Map(Map previousRoom, String previousRoomDirection, int layer) {
+    public Map(Map previousRoom, String previousRoomDirection, int layer,Player player) {
         switch (previousRoomDirection) {
             case "north":
                 this.nextRooms.put("south", previousRoom);
@@ -42,22 +47,22 @@ public class Map {
                 if (this.nextRooms.containsKey(direction)) continue;
                 Random rand = new Random();
                 if (rand.nextInt(100) <= PERCENT_CREATE_NEW_ROOM) {
-                    this.nextRooms.put(direction, new Map(this, direction, layer+1));
+                    this.nextRooms.put(direction, new Map(this, direction, layer+1,player));
                 }
             }
         }
 
+        this.fight = new Fight(new Monster(200,10,20,"vampire"),new Player(130,100,200,new ArrayList<>(0),"ToinouTheMachine",new ConsoleView()));
+        this.chest = new Chest(item);
         // COMBAT + TRESOR
         // rand création combat
     }
 
-    public void visitMap (Player player,Fight fight) {
+    public void visitMap() {
         if(!this.getAlreadyVisited()) {
             this.setAlreadyVisited(true);
-            //this.currentRoom.fight.start();
         }
-
-
+        //this.currentRoom.fight.battle();
     }
 
 

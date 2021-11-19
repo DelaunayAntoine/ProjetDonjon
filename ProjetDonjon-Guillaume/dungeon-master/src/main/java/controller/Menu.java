@@ -47,7 +47,7 @@ public class Menu extends GameState {
             case KeyEvent.VK_ENTER:
                 switch(this.optionsMenu[selected]) {
                     case START_GAME:
-                        super.gameStateManager.stackState(new PlayingState(gameStateManager));
+                        super.gameStateManager.stackState(new Play(gameStateManager));
                         break;
                     case QUIT_GAME:
                         System.exit(0);

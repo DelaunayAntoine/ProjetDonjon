@@ -1,13 +1,9 @@
 package model;
 
 
-import controller.Ressource;
-
-import java.awt.*;
-
 abstract public  class GameCharacter {
 
-    private int vitality ;
+    public int vitality ;
     private int strength ;
     private int maxVitality;
 

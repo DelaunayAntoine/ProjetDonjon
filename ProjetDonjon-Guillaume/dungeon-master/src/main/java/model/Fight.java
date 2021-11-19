@@ -10,7 +10,7 @@ public class Fight {
         this.player = player;
     }
 
-    public void Battle(){
+    public void battle(){
         while(player.getVitality() > 0 && monster.getVitality() > 0){
             this.player.attack(this.monster);
             if(monster.getVitality() >0){
@@ -21,9 +21,9 @@ public class Fight {
             }
             if(!this.player.isAlive() && this.monster.isAlive()){
                 System.out.println("You loose");
+
             }
         }
-
     }
 
 

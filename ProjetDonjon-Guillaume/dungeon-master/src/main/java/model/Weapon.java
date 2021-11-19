@@ -1,8 +1,11 @@
 package model;
 
-public class Weapon implements Item {
+public enum Weapon implements Item {
 
-    public Weapon(int value, String type) {
+    SWORDWEAPON(20, "Sword"),
+    BOWWEAPON(10,"Bow");
+
+    Weapon(int value, String type) {
         this.value = value;
         this.type = type;
     }

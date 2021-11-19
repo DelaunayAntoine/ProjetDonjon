@@ -15,7 +15,7 @@ public class WindowsManager {
     public static final int WIDTH = 800;
     public static final int HEIGHT = 450;
 
-    public WindowManager() {
+    public WindowsManager() {
         this.frame = new JFrame("Dungeon project");
         this.frame.setBounds(70, 70, 0, 0);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,4 +34,14 @@ public class WindowsManager {
         this.frame.pack();
         this.frame.setVisible(true);
     }
+
+    public void addKeyListener(KeyListener listener) {
+        try {
+            this.panel.addKeyListener(listener);
+        } catch (NullPointerException e) {
+            System.err.println("[WindowManager]: Error! Tried to add KeyListener before JPanel");
+            System.exit(-1);
+        }
+    }
 }
+

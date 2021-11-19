@@ -44,7 +44,7 @@ public class App extends Application {
         Scene scene = new Scene(root);
 
         Player player = new Player(130,100,200,new ArrayList<>(0) ,"ToinouTheMachine",new ConsoleView());
-        Map map = new Map();
+        Map map = new Map(player);
         player.setCurrentRoom(map);
 
         JavaFXController javaFXController = new JavaFXController(player);

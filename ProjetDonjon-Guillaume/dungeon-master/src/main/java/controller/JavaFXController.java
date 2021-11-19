@@ -11,10 +11,10 @@ public class JavaFXController {
         JavaFXController(Player player){
                 moveKeyPressEventHandler = (EventHandler<KeyEvent>) event -> {
                         switch (event.getCode()) {
-                                case UP:    player.exploreNorth(); break;
-                                case DOWN:  player.exploreSouth(); break;
-                                case LEFT:  player.exploreWest(); break;
-                                case RIGHT: player.exploreEast(); break;
+                                case UP:    player.exploreNorth(player); break;
+                                case DOWN:  player.exploreSouth(player); break;
+                                case LEFT:  player.exploreWest(player); break;
+                                case RIGHT: player.exploreEast(player); break;
                         }
                 };
         }
