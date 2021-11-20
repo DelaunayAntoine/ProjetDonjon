@@ -56,7 +56,7 @@ public class App extends Application {
         Scene scene = new Scene(root);
 
 
-        Player player = new Player(60,100,200,new ArrayList<>() ,"ToinouTheMachine",new ConsoleView());
+        Player player = new Player(120,100,200,new ArrayList<>() ,"ToinouTheMachine",new ConsoleView());
         Map map = new Map(player);
         player.setCurrentRoom(map);
         map.visitMap();
