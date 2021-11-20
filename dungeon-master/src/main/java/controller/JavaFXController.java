@@ -18,7 +18,7 @@ public class JavaFXController {
                                 case DOWN:  player.exploreSouth(player); break;
                                 case LEFT:  player.exploreWest(player); break;
                                 case RIGHT: player.exploreEast(player); break;
-                                case B:  player.use(item); break;
+                                case SPACE:  player.use(item); break;
                         }
 
                 };

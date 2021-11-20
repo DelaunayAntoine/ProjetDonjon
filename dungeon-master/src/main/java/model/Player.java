@@ -10,7 +10,6 @@ public class Player extends GameCharacter{
     private String  name;
     private View view;
     private Map currentRoom;
-    private Fight fight;
     private static final int PERCENT_CHOICE_TO_FIGHT = 50;
     private static final int PERCENT_CHOICE_TO_HAVE_CHEST = 20;
 
@@ -33,6 +32,7 @@ public class Player extends GameCharacter{
             this.setCurrentRoom(this.getCurrentRoom().getNorthRoom());
             if(!this.currentRoom.getAlreadyVisited()) {
                 this.currentRoom.setAlreadyVisited(true);
+                this.currentRoom.trap.GetTrapped(player);
                 Random rand = new Random();
                 if (rand.nextInt(100) <= PERCENT_CHOICE_TO_FIGHT) {
                     this.currentRoom.fight.battle();
@@ -122,7 +122,7 @@ public class Player extends GameCharacter{
             int newVitality = this.getVitality() + item.getValue();
             this.setVitality(newVitality);
             this.inventory.remove(item);
-            System.out.println("Use Item" );
+            System.out.println("Use " + item.getType() );
         }
     }
 

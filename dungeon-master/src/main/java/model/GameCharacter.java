@@ -29,10 +29,7 @@ abstract public  class GameCharacter {
         return strength;
     }
 
-    public int getMaxVitality() {
 
-        return maxVitality;
-    }
     public void setVitality(int vitality) {
 
         this.vitality = vitality;
@@ -48,6 +45,8 @@ abstract public  class GameCharacter {
         this.maxVitality = maxVitality;
     }
 
+    public int getMaxVitality() {
 
-
+        return maxVitality;
+    }
 }
