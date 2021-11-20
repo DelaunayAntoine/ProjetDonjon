@@ -20,6 +20,9 @@ public class Trap {
 
         player.setVitality(player.getVitality() - this.getDamage());
         System.out.println("You take " + getDamage() + " trap damage");
+        if(!player.isAlive()){
+            System.out.println("You die");
+        }
 
     }
 

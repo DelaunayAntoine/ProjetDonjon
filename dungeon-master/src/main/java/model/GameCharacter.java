@@ -16,7 +16,9 @@ abstract public  class GameCharacter {
     }
     public int getVitality() {
 
+        System.out.println(vitality); //debug
         return vitality;
+
     }
 
     public boolean isAlive(){

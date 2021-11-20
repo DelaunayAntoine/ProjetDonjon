@@ -54,7 +54,7 @@ public class Map {
         }
 
         this.trap = new Trap("hole",60);
-        this.fight = new Fight(new Monster(200,50,20,"vampire"),new Player(100, 100,200,new ArrayList<>(0),"ToinouTheMachine",new ConsoleView()));
+        this.fight = new Fight(new Monster(200,50,20,"vampire"),new Player(60, 100,200,new ArrayList<>(0),"ToinouTheMachine",new ConsoleView()));
         //this.fight = new Fight(new Monster(200,60,20,"zombie"),new Player(130,100,200,new ArrayList<>(0),"ToinouTheMachine",new ConsoleView()));
         this.chest = new Chest(item);
         // COMBAT + TRESOR
