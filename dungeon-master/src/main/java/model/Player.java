@@ -31,6 +31,7 @@ public class Player extends GameCharacter{
         if (this.getCurrentRoom().getNorthRoom() != null) {
             this.setCurrentRoom(this.getCurrentRoom().getNorthRoom());
             if(!this.currentRoom.getAlreadyVisited()) {
+                Map.nbMapVisited += 1;
                 this.currentRoom.setAlreadyVisited(true);
                 this.currentRoom.trap.GetTrapped(player);
                 Random rand = new Random();
@@ -39,6 +40,9 @@ public class Player extends GameCharacter{
                 }
                 if (rand.nextInt(100) <= PERCENT_CHOICE_TO_HAVE_CHEST) {
                     this.currentRoom.chest.open(player);
+                }
+                if(Map.nbMapVisited == Map.nbMap){
+                    System.out.println("Game Over You Win");
                 }
             }
             System.out.println("you're going to north room.");
@@ -51,6 +55,7 @@ public class Player extends GameCharacter{
         if (this.getCurrentRoom().getSouthRoom() != null) {
             this.setCurrentRoom(this.getCurrentRoom().getSouthRoom());
             if(!this.currentRoom.getAlreadyVisited()) {
+                Map.nbMapVisited += 1;
                 this.currentRoom.setAlreadyVisited(true);
                 this.currentRoom.trap.GetTrapped(player);
                 Random rand = new Random();
@@ -59,6 +64,9 @@ public class Player extends GameCharacter{
                 }
                 if (rand.nextInt(100) <= PERCENT_CHOICE_TO_HAVE_CHEST) {
                     this.currentRoom.chest.open(player);
+                }
+                if(Map.nbMapVisited == Map.nbMap){
+                    System.out.println("Game Over You Win");
                 }
             }
             System.out.println("you're going to south room.");
@@ -71,6 +79,7 @@ public class Player extends GameCharacter{
         if (this.getCurrentRoom().getEastRoom() != null) {
             this.setCurrentRoom(this.getCurrentRoom().getEastRoom());
             if(!this.currentRoom.getAlreadyVisited()) {
+                Map.nbMapVisited += 1;
                 this.currentRoom.setAlreadyVisited(true);
                 this.currentRoom.trap.GetTrapped(player);
                 Random rand = new Random();
@@ -81,6 +90,10 @@ public class Player extends GameCharacter{
                     this.currentRoom.chest.open(player);
                 }
             }
+            if(Map.nbMapVisited == Map.nbMap){
+                System.out.println("Game Over You Win");
+            }
+
             System.out.println("you're going to east room.");
         } else {
             System.out.println("You're facing a wall !");
@@ -91,6 +104,7 @@ public class Player extends GameCharacter{
         if (this.getCurrentRoom().getWestRoom() != null) {
             this.setCurrentRoom(this.getCurrentRoom().getWestRoom());
             if(!this.currentRoom.getAlreadyVisited()) {
+                Map.nbMapVisited += 1;
                 this.currentRoom.setAlreadyVisited(true);
                 this.currentRoom.trap.GetTrapped(player);
                 Random rand = new Random();
@@ -99,6 +113,9 @@ public class Player extends GameCharacter{
                 }
                 if (rand.nextInt(100) <= PERCENT_CHOICE_TO_HAVE_CHEST) {
                     this.currentRoom.chest.open(player);
+                }
+                if(Map.nbMapVisited == Map.nbMap){
+                    System.out.println("Game Over You Win");
                 }
             }
             System.out.println("you're going to west room.");
@@ -120,15 +137,30 @@ public class Player extends GameCharacter{
 
     }
 
-    public void use(Item item){
-        if (this.inventory.contains(item)){
-            int newVitality = this.getVitality() + item.getValue();
-            this.setVitality(newVitality);
-            this.inventory.remove(item);
-            System.out.println("Use " + item.getType() );
+    public void use(Item item) {
+        if (this.inventory.contains(item)) {
+            if (item == Potion.HEALPOTION) {
+                this.setVitality(this.getVitality() + item.getValue());
+                this.inventory.remove(item);
+                System.out.println("Use " + item.getType());
+            }
+            if (item == Potion.DAMAGEPOTION) {
+                this.setStrength(this.getStrength() + item.getValue());
+                this.inventory.remove(item);
+                System.out.println("Use " + item.getType());
+            }
+            if (item == Weapon.BOWWEAPON) {
+                this.setStrength(this.getStrength() + item.getValue());
+                this.inventory.remove(item);
+                System.out.println("Use " + item.getType());
+            }
+            if (item == Weapon.SWORDWEAPON) {
+                this.setStrength(this.getStrength() + item.getValue());
+                this.inventory.remove(item);
+                System.out.println("Use " + item.getType());
+            }
         }
     }
-
 
     public Map getCurrentRoom() {
         return currentRoom;
