@@ -52,6 +52,7 @@ public class Player extends GameCharacter{
             this.setCurrentRoom(this.getCurrentRoom().getSouthRoom());
             if(!this.currentRoom.getAlreadyVisited()) {
                 this.currentRoom.setAlreadyVisited(true);
+                this.currentRoom.trap.GetTrapped(player);
                 Random rand = new Random();
                 if (rand.nextInt(100) <= PERCENT_CHOICE_TO_FIGHT) {
                     this.currentRoom.fight.battle();
@@ -71,6 +72,7 @@ public class Player extends GameCharacter{
             this.setCurrentRoom(this.getCurrentRoom().getEastRoom());
             if(!this.currentRoom.getAlreadyVisited()) {
                 this.currentRoom.setAlreadyVisited(true);
+                this.currentRoom.trap.GetTrapped(player);
                 Random rand = new Random();
                 if (rand.nextInt(100) <= PERCENT_CHOICE_TO_FIGHT) {
                     this.currentRoom.fight.battle();
@@ -90,6 +92,7 @@ public class Player extends GameCharacter{
             this.setCurrentRoom(this.getCurrentRoom().getWestRoom());
             if(!this.currentRoom.getAlreadyVisited()) {
                 this.currentRoom.setAlreadyVisited(true);
+                this.currentRoom.trap.GetTrapped(player);
                 Random rand = new Random();
                 if (rand.nextInt(100) <= PERCENT_CHOICE_TO_FIGHT) {
                     this.currentRoom.fight.battle();
