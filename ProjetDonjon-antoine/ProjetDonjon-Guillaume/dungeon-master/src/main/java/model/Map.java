@@ -14,10 +14,13 @@ public class Map {
     private static final int PERCENT_CREATE_NEW_ROOM = 50;
     private static final int FINAL_LAYER = 6;
     private Boolean isAlreadyVisited = false;
+    public static int nbMap = 0;
+    public static int nbMapVisited = 0;
     private Map currentRoom;
     public Fight fight;
     public Chest chest;
     public Item item;
+    public Trap trap;
 
 
     public Map(Player player) {
@@ -29,7 +32,9 @@ public class Map {
             }
         }
     }
+
     public Map(Map previousRoom, String previousRoomDirection, int layer,Player player) {
+        Map.nbMap += 1;
         switch (previousRoomDirection) {
             case "north":
                 this.nextRooms.put("south", previousRoom);
@@ -54,17 +59,24 @@ public class Map {
             }
         }
 
-        this.fight = new Fight(new Monster(200,10,20,"vampire"),new Player(130,100,200,new ArrayList<>(0),"ToinouTheMachine",new ConsoleView()));
+
+        this.trap = new Trap("hole",10);
+        this.fight = new Fight(new Monster(200,50,200,"vampire"),player);
+        //this.fight = new Fight(new Monster(200,60,20,"zombie"),new Player(130,100,200,new ArrayList<>(0),"ToinouTheMachine",new ConsoleView()));
         this.chest = new Chest(item);
-        // COMBAT + TRESOR
-        // rand création combat
+
+
+    }
+    public void render(Graphics graphics){
+        for(int i = 0; i <Map.nbMap ; ++i){
+            graphics.setColor(Color.black);
+        }
     }
 
     public void visitMap() {
         if(!this.getAlreadyVisited()) {
             this.setAlreadyVisited(true);
         }
-        //this.currentRoom.fight.battle();
     }
 
 
@@ -92,11 +104,6 @@ public class Map {
 
     public Boolean getAlreadyVisited() {
         return isAlreadyVisited;
-    }
-
-    public void render(Graphics graphics){
-//        graphics.drawImage("dungeon-master/src/main/Asset/SwordMan.png", 0,0,null);
-        graphics.setColor(new Color(60, 60, 60));
     }
 
 

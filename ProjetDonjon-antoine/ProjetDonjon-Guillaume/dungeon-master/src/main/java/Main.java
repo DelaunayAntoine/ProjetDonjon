@@ -1,4 +1,6 @@
 import javax.swing.*;
+
+import controller.Load;
 import controller.Routeur;
 
 public class Main {
@@ -7,6 +9,7 @@ public class Main {
 
             @Override
             public void run() {
+                Load.load();
                 Routeur.init();
                 Routeur.start();
             }

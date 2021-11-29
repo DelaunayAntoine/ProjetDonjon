@@ -16,7 +16,9 @@ abstract public  class GameCharacter {
     }
     public int getVitality() {
 
+        System.out.println(vitality); //debug
         return vitality;
+
     }
 
     public boolean isAlive(){
@@ -29,10 +31,7 @@ abstract public  class GameCharacter {
         return strength;
     }
 
-    public int getMaxVitality() {
 
-        return maxVitality;
-    }
     public void setVitality(int vitality) {
 
         this.vitality = vitality;
@@ -48,6 +47,8 @@ abstract public  class GameCharacter {
         this.maxVitality = maxVitality;
     }
 
+    public int getMaxVitality() {
 
-
+        return maxVitality;
+    }
 }
