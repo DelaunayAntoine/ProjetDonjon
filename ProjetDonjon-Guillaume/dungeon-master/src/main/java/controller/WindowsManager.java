@@ -12,8 +12,8 @@ public class WindowsManager {
     private JFrame frame;
     private JPanel panel;
 
-    public static final int WIDTH = 800;
-    public static final int HEIGHT = 450;
+    public static final int WIDTH = 1500;
+    public static final int HEIGHT = 800;
 
     public WindowsManager() {
         this.frame = new JFrame("Dungeon project");

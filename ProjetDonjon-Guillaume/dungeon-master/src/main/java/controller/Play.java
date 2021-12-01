@@ -1,18 +1,31 @@
 package controller;
 
+import model.Map;
 import model.Player;
+import model.Potion;
+import model.Weapon;
+import view.ConsoleView;
 
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class Play extends GameState{
 
-    private Player player;
+    Player player;
+    Map map;
+
+
+
 
     protected Play(GameStateManager manager) {
         super(manager);
-//        this.player = new Player();
+        this.player = new Player(120,100,120,new ArrayList<>() ,"ToinouTheMachine",new ConsoleView());
+        this.map = new Map(player);
+        this.player.setCurrentRoom(map);
+        this.map.visitMap();
+
     }
 
     @Override
@@ -22,14 +35,41 @@ public class Play extends GameState{
 
     @Override
     protected void render(Graphics graphics) {
-//        this.player.render(graphics);
+        map.drawRoom(graphics);
+
+//        if(player.use(Weapon.BOWWEAPON) == true){
+//            this.player.renderSwordsman(graphics, player);
+//        }else if(player.use(Weapon.SWORDWEAPON) == true){
+//            this.player.renderBowman(graphics,player);
+//        }else{
+//        }
+
+            this.player.renderBowman(graphics, player);
+//        this.player.renderSwordsman(graphics, player);
+        this.player.drawEnnemy(graphics);
+
+        map.drawMap(graphics,player);
 
         graphics.setColor(Color.WHITE);
-        graphics.setFont(new Font("arial", Font.PLAIN, 15));
-        graphics.drawImage(Ressource.TEXTURES.get(Ressource.HEART), 0, 0, 8, 8, null);
-        graphics.drawString(this.player.getVitality()+"/"+this.player.getMaxVitality(), 12, 20);
-        graphics.drawImage(Ressource.TEXTURES.get(Ressource.ARMOR), 80, 0, 8, 8, null);
-        graphics.drawString(this.player.getStrength()+"", 8, 20);
+        graphics.setFont(new Font("arial", Font.PLAIN, 65));
+
+        graphics.drawImage(Ressource.TEXTURES.get(Ressource.HEART), 0, 0, 100, 100, null);
+        graphics.drawString(this.player.getVitality()+"/"+ this.player.getMaxVitality(), 120, 65);
+        graphics.drawImage(Ressource.TEXTURES.get(Ressource.ARMOR), 350, 0, 100, 100, null);
+        graphics.drawString(this.player.getStrength()+"", 450, 65);
+
+        graphics.setFont(new Font("arial", Font.PLAIN, 35));
+        graphics.drawImage(Ressource.TEXTURES.get(Ressource.POTION_HEAL), 30, 250, 100, 100, null);
+        graphics.drawString(player.displayInventory(Potion.HEALPOTION),150,325);
+        graphics.drawImage(Ressource.TEXTURES.get(Ressource.POTION_STRENGH), 30, 350, 100, 100, null);
+        graphics.drawString(player.displayInventory(Potion.DAMAGEPOTION),150,425);
+//        graphics.drawString(this.player.getInventory(),530,400);
+
+        graphics.drawImage(Ressource.TEXTURES.get(Ressource.SWORD), 0, 450, 150, 100, null);
+        graphics.drawString(player.displayInventory(Weapon.SWORDWEAPON),150,525);
+        graphics.drawImage(Ressource.TEXTURES.get(Ressource.BOW), 0, 550, 150, 150, null);
+        graphics.drawString(player.displayInventory(Weapon.BOWWEAPON),150,625);
+
 
     }
 
@@ -37,21 +77,53 @@ public class Play extends GameState{
     protected void keyPressed(int keyCode) {
         switch(keyCode) {
             case KeyEvent.VK_Z:
-                this.player.exploreNorth(player);
+                player.exploreNorth(player);
                 break;
             case KeyEvent.VK_Q:
-                this.player.exploreWest(player);
+                player.exploreWest(player);
                 break;
             case KeyEvent.VK_S:
-                this.player.exploreSouth(player);
+                player.exploreSouth(player);
                 break;
             case KeyEvent.VK_D:
-                this.player.exploreEast(player);
+                player.exploreEast(player);
                 break;
+            case KeyEvent.VK_P:
+                player.use(Potion.DAMAGEPOTION);
+                break;
+            case KeyEvent.VK_O:
+                player.use(Potion.HEALPOTION);
+                break;
+            case KeyEvent.VK_I:
+                player.use(Weapon.SWORDWEAPON);
+                break;
+            case KeyEvent.VK_U:
+                player.use(Weapon.BOWWEAPON);
+                break;
+
         }
     }
 
     @Override
     protected void keyReleased(int keyCode) {
+        switch(keyCode) {
+            case KeyEvent.VK_Z:
+                break;
+            case KeyEvent.VK_Q:
+                break;
+            case KeyEvent.VK_S:
+                break;
+            case KeyEvent.VK_D:
+                break;
+            case KeyEvent.VK_1:
+                break;
+            case KeyEvent.VK_2:
+                break;
+            case KeyEvent.VK_3:
+                break;
+            case KeyEvent.VK_4:
+                break;
+
+        }
     }
 }

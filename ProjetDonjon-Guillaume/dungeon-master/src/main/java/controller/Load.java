@@ -7,26 +7,24 @@ import java.io.IOException;
 public class Load {
     public static void load() {
         try {
-            File texturesFolder = new File("dungeon-master/src/main/Asset");
-            for(File imgFile : texturesFolder.listFiles()) {
-                Ressource.ROOMS.put(imgFile.getName(), ImageIO.read(imgFile));
-            }
-            Ressource.TEXTURES.add(Ressource.FLOOR, ImageIO.read(new File("dungeon-master/src/main/Asset/floor.png")));
-            Ressource.TEXTURES.add(Ressource.STONE, ImageIO.read(new File("dungeon-master/src/main/Asset/stone.png")));
-            Ressource.TEXTURES.add(Ressource.WALL, ImageIO.read(new File("dungeon-master/src/main/Asset/wall.png")));
-            Ressource.TEXTURES.add(Ressource.TILE, ImageIO.read(new File("dungeon-master/src/main/Asset/tile.png")));
-            Ressource.TEXTURES.add(Ressource.GRASS, ImageIO.read(new File("dungeon-master/src/main/Asset/grass.png")));
-            Ressource.TEXTURES.add(Ressource.PLAYER_ARCHER, ImageIO.read(new File("dungeon-master/src/main/Asset/Archer.png")));
-            Ressource.TEXTURES.add(Ressource.PLAYER_SORCERER, ImageIO.read(new File("dungeon-master/src/main/Asset/Sorcerer.png")));
-            Ressource.TEXTURES.add(Ressource.PLAYER_SWORDSMAN, ImageIO.read(new File("dungeon-master/src/main/Asset/SwordMan.png")));
-            Ressource.TEXTURES.add(Ressource.STAIRS, ImageIO.read(new File("dungeon-master/src/main/Asset/stairs.png")));
-            Ressource.TEXTURES.add(Ressource.CHEST, ImageIO.read(new File("dungeon-master/src/main/Asset/chest.png")));
-            Ressource.TEXTURES.add(Ressource.ENEMY_GOBBLIN, ImageIO.read(new File("dungeon-master/src/main/Asset/Goblin2.png")));
-            Ressource.TEXTURES.add(Ressource.ENEMY_ZOMBIE, ImageIO.read(new File("dungeon-master/src/main/Asset/ZOMBIE.png")));
-            Ressource.TEXTURES.add(Ressource.ATTACK, ImageIO.read(new File("dungeon-master/src/main/Asset/attack.png")));
-            Ressource.TEXTURES.add(Ressource.HEART, ImageIO.read(new File("dungeon-master/src/main/Asset/heart.png")));
-            Ressource.TEXTURES.add(Ressource.ARMOR, ImageIO.read(new File("dungeon-master/src/main/Asset/armor.png")));
-            Ressource.TEXTURES.add(Ressource.GOLD, ImageIO.read(new File("dungeon-master/src/main/Asset/gold.png")));
+            Ressource.TEXTURES.add(Ressource.PLAYER_ARCHER, ImageIO.read(new File("E:\\delau\\Projet\\ProjetDonjon-Guillaume\\dungeon-master\\src\\main\\Asset\\Archer.png")));
+            Ressource.TEXTURES.add(Ressource.PLAYER_SORCERER, ImageIO.read(new File("E:\\delau\\Projet\\ProjetDonjon-Guillaume\\dungeon-master\\src\\main\\Asset\\Sorcerer.png")));
+            Ressource.TEXTURES.add(Ressource.PLAYER_SWORDSMAN, ImageIO.read(new File("E:\\delau\\Projet\\ProjetDonjon-Guillaume\\dungeon-master\\src\\main\\Asset\\SwordMan.png")));
+            Ressource.TEXTURES.add(Ressource.ENEMY_GOBBLIN, ImageIO.read(new File("E:\\delau\\Projet\\ProjetDonjon-Guillaume\\dungeon-master\\src\\main\\Asset\\Goblin2.png")));
+            Ressource.TEXTURES.add(Ressource.ENEMY_ZOMBIE, ImageIO.read(new File("E:\\delau\\Projet\\ProjetDonjon-Guillaume\\dungeon-master\\src\\main\\Asset\\ZOMBIE.png")));
+            Ressource.TEXTURES.add(Ressource.HEART, ImageIO.read(new File("E:\\delau\\Projet\\ProjetDonjon-Guillaume\\dungeon-master\\src\\main\\Asset\\heart.png")));
+            Ressource.TEXTURES.add(Ressource.ARMOR, ImageIO.read(new File("E:\\delau\\Projet\\ProjetDonjon-Guillaume\\dungeon-master\\src\\main\\Asset\\armor.png")));
+            Ressource.TEXTURES.add(Ressource.POTION_HEAL, ImageIO.read(new File("E:\\delau\\Projet\\ProjetDonjon-Guillaume\\dungeon-master\\src\\main\\Asset\\Potion-Sante.png")));
+            Ressource.TEXTURES.add(Ressource.POTION_STRENGH, ImageIO.read(new File("E:\\delau\\Projet\\ProjetDonjon-Guillaume\\dungeon-master\\src\\main\\Asset\\Potion-Force.png")));
+            Ressource.TEXTURES.add(Ressource.PIXEL, ImageIO.read(new File("E:\\delau\\Projet\\ProjetDonjon-Guillaume\\dungeon-master\\src\\main\\Asset\\Pixel-Noir.png")));
+            Ressource.TEXTURES.add(Ressource.PIXEL_RED, ImageIO.read(new File("E:\\delau\\Projet\\ProjetDonjon-Guillaume\\dungeon-master\\src\\main\\Asset\\Pixel-Rouge.png")));
+            Ressource.TEXTURES.add(Ressource.PIXEL_PURPLE, ImageIO.read(new File("E:\\delau\\Projet\\ProjetDonjon-Guillaume\\dungeon-master\\src\\main\\Asset\\Pixel-Violet.png")));
+            Ressource.TEXTURES.add(Ressource.SCENE_DUNGEON, ImageIO.read(new File("E:\\delau\\Projet\\ProjetDonjon-Guillaume\\dungeon-master\\src\\main\\Asset\\Scene-Dungeon.png")));
+            Ressource.TEXTURES.add(Ressource.CHEST, ImageIO.read(new File("E:\\delau\\Projet\\ProjetDonjon-Guillaume\\dungeon-master\\src\\main\\Asset\\Chest.png")));
+            Ressource.TEXTURES.add(Ressource.TRAP, ImageIO.read(new File("E:\\delau\\Projet\\ProjetDonjon-Guillaume\\dungeon-master\\src\\main\\Asset\\Trap.png")));
+            Ressource.TEXTURES.add(Ressource.BOW, ImageIO.read(new File("E:\\delau\\Projet\\ProjetDonjon-Guillaume\\dungeon-master\\src\\main\\Asset\\Bow.png")));
+            Ressource.TEXTURES.add(Ressource.SWORD, ImageIO.read(new File("E:\\delau\\Projet\\ProjetDonjon-Guillaume\\dungeon-master\\src\\main\\Asset\\Sword.png")));
+
         } catch (IOException e) {
             e.printStackTrace();
         }

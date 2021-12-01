@@ -26,5 +26,7 @@ public class Fight {
         }
     }
 
+    public boolean getBattled(){return false;}
+
 
 }
