@@ -11,7 +11,7 @@ public class Map {
     private java.util.Map<String, Map> nextRooms = new HashMap<String, Map>();
     private static final List<String> DIRECTIONS  = Arrays.asList("north", "south", "east", "west");
     private static final int PERCENT_CREATE_NEW_ROOM = 50;
-    private static final int FINAL_LAYER = 6;
+    private static final int FINAL_LAYER = 4;
     private Boolean isAlreadyVisited = false;
     public static int nbMap = 0;
     public static int nbMapVisited = 0;
@@ -93,19 +93,19 @@ public class Map {
         graphics.drawImage(Ressource.TEXTURES.get(Ressource.SCENE_DUNGEON), 0, 0, 1500, 800, null);
     }
 
-//    public void drawEnnemy(Graphics graphics, Player player){
-//        if(Objects.equals(player.getCurrentRoom(), this)&& Objects.equals(player., fight)){
-//
-//            graphics.drawImage(Ressource.TEXTURES.get(Ressource.ENEMY_ZOMBIE), 450, 400, 350, 350, null);
-//        }
-//        else if (Objects.equals(player.getCurrentRoom(), this)&& Objects.equals(player.getCurrentRoom(), trap)){
-//            graphics.drawImage(Ressource.TEXTURES.get(Ressource.TRAP), 450, 400, 350, 350, null);
-//        }
-//        else if(Objects.equals(player.getCurrentRoom(), this)&& Objects.equals(player.getCurrentRoom(), chest)){
-//            graphics.drawImage(Ressource.TEXTURES.get(Ressource.CHEST), 450, 400, 350, 350, null);
-//        }
-//
-//    }
+    public void drawEnnemy(Graphics graphics, Player player){
+        if(Objects.equals(player.getCurrentRoom(), this)&& Objects.equals(player, fight)){
+
+            graphics.drawImage(Ressource.TEXTURES.get(Ressource.ENEMY_ZOMBIE), 450, 400, 350, 350, null);
+        }
+        else if (Objects.equals(player.getCurrentRoom(), this)&& Objects.equals(player.getCurrentRoom(), trap)){
+            graphics.drawImage(Ressource.TEXTURES.get(Ressource.TRAP), 450, 400, 350, 350, null);
+        }
+        else if(Objects.equals(player.getCurrentRoom(), this)&& Objects.equals(player.getCurrentRoom(), chest)){
+            graphics.drawImage(Ressource.TEXTURES.get(Ressource.CHEST), 450, 400, 350, 350, null);
+        }
+
+    }
 
     public void drawMap(Graphics g, Player player) {
         if(Objects.equals(player.getCurrentRoom(), this)){

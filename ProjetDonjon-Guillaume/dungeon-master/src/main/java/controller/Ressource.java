@@ -22,6 +22,8 @@ public class Ressource {
     public static final byte TRAP = 13;
     public static final byte BOW = 14;
     public static final byte SWORD = 15;
+    public static final byte LOST = 16;
+    public static final byte WIN = 17;
 
 
     public static final ArrayList<BufferedImage> TEXTURES = new ArrayList<>();

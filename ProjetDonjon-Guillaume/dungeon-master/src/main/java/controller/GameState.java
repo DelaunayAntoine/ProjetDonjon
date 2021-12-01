@@ -11,7 +11,7 @@ public abstract class GameState {
 
     protected abstract void loop();
 
-    protected abstract void render(Graphics graphics);
+    protected abstract void draw(Graphics graphics);
 
     protected abstract void keyPressed(int keyCode);
 

@@ -35,6 +35,10 @@ public class WindowsManager {
         this.frame.setVisible(true);
     }
 
+    public void closeWindow(){
+        this.frame.dispose();
+    }
+
     public void addKeyListener(KeyListener listener) {
         try {
             this.panel.addKeyListener(listener);

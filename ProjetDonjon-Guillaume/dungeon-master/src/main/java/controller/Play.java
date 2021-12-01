@@ -34,21 +34,19 @@ public class Play extends GameState{
     }
 
     @Override
-    protected void render(Graphics graphics) {
+    protected void draw(Graphics graphics) {
         map.drawRoom(graphics);
 
-//        if(player.use(Weapon.BOWWEAPON) == true){
-//            this.player.renderSwordsman(graphics, player);
-//        }else if(player.use(Weapon.SWORDWEAPON) == true){
-//            this.player.renderBowman(graphics,player);
-//        }else{
-//        }
 
-            this.player.renderBowman(graphics, player);
-//        this.player.renderSwordsman(graphics, player);
-        this.player.drawEnnemy(graphics);
+//            this.player.renderBowman(graphics, player);
+        this.player.renderSwordsman(graphics, player);
+//        this.player.drawEnnemy(graphics);
 
         map.drawMap(graphics,player);
+        map.drawEnnemy(graphics,player);
+//        player.drawCombat(graphics);
+//        map.drawEnnemy(graphics,player);
+//        player.drawCombat(graphics);
 
         graphics.setColor(Color.WHITE);
         graphics.setFont(new Font("arial", Font.PLAIN, 65));
@@ -69,7 +67,11 @@ public class Play extends GameState{
         graphics.drawString(player.displayInventory(Weapon.SWORDWEAPON),150,525);
         graphics.drawImage(Ressource.TEXTURES.get(Ressource.BOW), 0, 550, 150, 150, null);
         graphics.drawString(player.displayInventory(Weapon.BOWWEAPON),150,625);
+        if(!this.player.isAlive()){
+            graphics.drawImage(Ressource.TEXTURES.get(Ressource.LOST), 0, 0, 1500, 800, null);
+        }
 
+        player.drawVictory(graphics);
 
     }
 

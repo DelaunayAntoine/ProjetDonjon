@@ -5,6 +5,7 @@ public class Trap {
     private String Traptype;
 
 
+
     private int Damage;
 
     public Trap(String traptype, int damage) {
@@ -16,6 +17,7 @@ public class Trap {
         return Damage;
     }
 
+
     public void GetTrapped(Player player){
 
         player.setVitality(player.getVitality() - this.getDamage());
@@ -26,6 +28,6 @@ public class Trap {
 
     }
 
-    public boolean trapped(){return false;}
+
 
 }

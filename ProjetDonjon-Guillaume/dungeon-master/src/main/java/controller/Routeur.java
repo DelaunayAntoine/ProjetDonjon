@@ -1,11 +1,13 @@
 package controller;
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import model.Player;
 
 public class Routeur {
     private static GameStateManager gameStateManager;
@@ -25,6 +27,11 @@ public class Routeur {
         windowManager.addKeyListener(new Keyboard());
         windowManager.createWindow();
         timer.start();
+
+    }
+
+    public static void end(){
+
     }
 
     private static class MainGameLoop implements ActionListener {
@@ -43,7 +50,7 @@ public class Routeur {
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            gameStateManager.render(g);
+            gameStateManager.draw(g);
             repaint();
         }
     }

@@ -5,6 +5,7 @@ import view.View;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 
@@ -16,7 +17,7 @@ public class Player extends GameCharacter{
     private Map currentRoom;
     private static final int PERCENT_CHOICE_TO_FIGHT = 50;
     private static final int PERCENT_CHOICE_TO_HAVE_CHEST = 20;
-    private static final int PERCENT_CHOICE_TO_GETTRAPPED = 20;
+    private static final int PERCENT_CHOICE_TO_GETTRAPPED = 100;
 
     public Player(int vitality, int strength,int maxVitality,ArrayList<Item> inventory,String name, View view) {
         super(vitality, strength,maxVitality);
@@ -34,6 +35,7 @@ public class Player extends GameCharacter{
                 Random rand = new Random();
                 if(rand.nextInt(100) <= PERCENT_CHOICE_TO_GETTRAPPED) {
                     this.currentRoom.trap.GetTrapped(player);
+
 
                 }
                 if (rand.nextInt(100) <= PERCENT_CHOICE_TO_FIGHT) {
@@ -64,6 +66,7 @@ public class Player extends GameCharacter{
                 if(rand.nextInt(100) <= PERCENT_CHOICE_TO_GETTRAPPED) {
                     this.currentRoom.trap.GetTrapped(player);
 
+
                 }
                 if (rand.nextInt(100) <= PERCENT_CHOICE_TO_FIGHT) {
                     this.currentRoom.fight.battle();
@@ -93,6 +96,7 @@ public class Player extends GameCharacter{
                 if(rand.nextInt(100) <= PERCENT_CHOICE_TO_GETTRAPPED) {
                     this.currentRoom.trap.GetTrapped(player);
 
+
                 }
                 if (rand.nextInt(100) <= PERCENT_CHOICE_TO_FIGHT) {
                     this.currentRoom.fight.battle();
@@ -120,6 +124,7 @@ public class Player extends GameCharacter{
                 Random rand = new Random();
                 if(rand.nextInt(100) <= PERCENT_CHOICE_TO_GETTRAPPED) {
                     this.currentRoom.trap.GetTrapped(player);
+
 
                 }
                 if (rand.nextInt(100) <= PERCENT_CHOICE_TO_FIGHT) {
@@ -182,16 +187,13 @@ public class Player extends GameCharacter{
 //        return false;
     }
 
+    public void drawVictory(Graphics graphics){
+        if(Map.nbMapVisited == Map.nbMap){
+            graphics.drawImage(Ressource.TEXTURES.get(Ressource.WIN), 0, 0, 1500, 800, null);
 
-//    public int getNbPotion(Item item){
-//        int nbItem = 0;
-//        if(this.inventory.contains(item)){
-//            return nbItem;
-//        }
-//        if(this.inventory.contains(item == Potion.DAMAGEPOTION)){
-//            nbItem =
-//        }
-//    }
+        }
+    }
+
 
     public String displayInventory(Item item){
         StringBuilder itemInvent = new StringBuilder();
@@ -230,39 +232,40 @@ public class Player extends GameCharacter{
 
     }
 
-    public void drawPlayer(Graphics graphics, Item item){
 
-    }
-
-    public void drawEnnemy(Graphics graphics){
-        if(this.currentRoom.fight.getBattled() == true) {
-            graphics.drawImage(Ressource.TEXTURES.get(Ressource.ENEMY_ZOMBIE), 350, 400, 350, 350, null);
-        }
-        if(this.currentRoom.trap.trapped()== true) {
-            graphics.drawImage(Ressource.TEXTURES.get(Ressource.TRAP), 350, 400, 350, 350, null);
-        }
-        if(this.currentRoom.chest.getChested()== true) {
-            graphics.drawImage(Ressource.TEXTURES.get(Ressource.CHEST), 350, 400, 350, 350, null);
-        }
-    }
-    public void drawTrap(Graphics graphics,Player player){
+//    public void drawEnnemy(Graphics graphics){
+//        if(this.currentRoom.fight.getBattled() == true && Objects.equals(this.player.getCurrentRoom(), this)) {
+//            graphics.drawImage(Ressource.TEXTURES.get(Ressource.ENEMY_ZOMBIE), 350, 400, 350, 350, null);
+//        }
+//        if(this.currentRoom.trap.trapped()== true) {
+//            graphics.drawImage(Ressource.TEXTURES.get(Ressource.TRAP), 350, 400, 350, 350, null);
+//        }
+//        if(this.currentRoom.chest.getChested()== true) {
+//            graphics.drawImage(Ressource.TEXTURES.get(Ressource.CHEST), 350, 400, 350, 350, null);
+//        }
+//    }
+    public void drawTrap(Graphics graphics){
         graphics.drawImage(Ressource.TEXTURES.get(Ressource.TRAP), 350, 400, 350, 350, null);
 
     }
-    public void drawChest(Graphics graphics,Player player){
+    public void drawChest(Graphics graphics){
         graphics.drawImage(Ressource.TEXTURES.get(Ressource.CHEST), 350, 400, 350, 350, null);
+
+    }
+    public void drawEnnemy(Graphics graphics){
+        graphics.drawImage(Ressource.TEXTURES.get(Ressource.ENEMY_ZOMBIE), 350, 400, 350, 350, null);
 
     }
 
 //    public void drawCombat(Graphics graphics){
-//        if (getCurrentRoom().trap == this.currentRoom.trap){
-//            graphics.drawImage(Ressource.TEXTURES.get(Ressource.TRAP), 750, 400, 350, 350, null);
+//       if(getCurrentRoom().trap.isTrapped()){
+//           graphics.drawImage(Ressource.TEXTURES.get(Ressource.TRAP), 350, 400, 350, 350, null);
+//       }
+//        if(this.currentRoom.fight.getBattled()){
+//            drawEnnemy(graphics);
 //        }
-//        if(getCurrentRoom().fight == this.currentRoom.fight){
-//            graphics.drawImage(Ressource.TEXTURES.get(Ressource.ENEMY_ZOMBIE), 750, 400, 350, 350, null);
-//        }
-//        else if(getCurrentRoom().chest == this.currentRoom.chest){
-//            graphics.drawImage(Ressource.TEXTURES.get(Ressource.CHEST), 750, 400, 350, 350, null);
+//        if(this.currentRoom.chest.getChested()){
+//            drawChest(graphics);
 //        }
 //    }
 

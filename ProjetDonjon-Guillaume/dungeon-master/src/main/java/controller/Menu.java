@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 public class Menu extends GameState {
     private String[] optionsMenu;
     private static final String START_GAME = "Start Game!";
+
     private static final String QUIT_GAME = "Quit game";
     private int selected;
 
@@ -23,8 +24,8 @@ public class Menu extends GameState {
     }
 
     @Override
-    protected void render(Graphics graphics) {
-        graphics.setColor(new Color(30, 30, 70));
+    protected void draw(Graphics graphics) {
+        graphics.setColor(new Color(6, 0, 107));
         graphics.fillRect(0, 0, WindowsManager.WIDTH, WindowsManager.HEIGHT);
 
         graphics.setFont(new Font("Araial", Font.PLAIN, 25));

@@ -16,14 +16,6 @@ public class GameStateManager {
         this.states.add(state);
     }
 
-    public void backToPreviousState() {
-        this.states.pop();
-    }
-
-    public void clearStack() {
-        this.states.clear();
-    }
-
     public void loop() {
         try {
             this.states.peek().loop();
@@ -33,9 +25,9 @@ public class GameStateManager {
         }
     }
 
-    public void render(Graphics graphics) {
+    public void draw(Graphics graphics) {
         try {
-            this.states.peek().render(graphics);
+            this.states.peek().draw(graphics);
         } catch(EmptyStackException e) {
             System.err.println("[GameStateManager]: Error! GameState stack is empty!");
             System.exit(-1);
